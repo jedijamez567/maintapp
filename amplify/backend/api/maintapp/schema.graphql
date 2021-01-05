@@ -1,0 +1,66 @@
+type MaintenanceWorkers @model @auth(rules: [{allow: public}]) @key(name: "byProperties", fields: ["propertiesID"]) {
+  id: ID!
+  firstName: String
+  lastName: String
+  phoneNumber: AWSPhone
+  email: AWSEmail
+  MaintenanceRequests: [MaintenanceRequests] @connection(keyName: "byMaintenanceWorkers", fields: ["id"])
+  assignedTickets: ID
+  propertiesID: [ID!]
+}
+
+type Tenants @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  propertyID: ID
+  leasePeriod: String
+  payments: ID
+  firstName: String
+  lastName: String
+  email: AWSEmail
+  address: String
+  phoneNumber: AWSPhone
+  pets: Boolean
+  perferredContactTime: AWSTime
+  openRequests: ID
+  emergencyContactFirstName: String
+  emergencyContactLastName: String
+  emergencyContactPhone: AWSPhone
+  emergencyContactAddress: String
+  Documents: [Documents] @connection(keyName: "byTenants", fields: ["id"])
+  properties: [PropertiesTenants] @connection(keyName: "byTenants", fields: ["id"])
+  MaintenanceRequests: [MaintenanceRequests] @connection(keyName: "byTenants", fields: ["id"])
+}
+
+type MaintenanceRequests @model @auth(rules: [{allow: public}]) @key(name: "byMaintenanceWorkers", fields: ["maintenanceworkersID"]) @key(name: "byTenants", fields: ["tenantsID"]) {
+  id: ID!
+  creationDate: AWSDateTime
+  completionDate: AWSDateTime
+  severity: Int
+  tenantID: Int
+  resolverID: Int
+  maintenanceworkersID: [ID!]
+  tenantsID: ID!
+}
+
+type Properties @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  propertyName: String
+  MaintenanceWorkers: [MaintenanceWorkers] @connection(keyName: "byProperties", fields: ["id"])
+  PropertiesTenants: [PropertiesTenants] @connection(keyName: "byProperties", fields: ["id"])
+}
+
+type Documents @model @auth(rules: [{allow: public}]) @key(name: "byTenants", fields: ["tenantsID"]) {
+  id: ID!
+  s3url: String
+  tenantsID: [ID!]
+  Properties: Properties @connection
+}
+
+type PropertiesTenants @model(queries: null) @key(name: "byTenants", fields: ["tenantsID", "propertiesID"]) @key(name: "byProperties", fields: ["propertiesID", "tenantsID"]) @auth(rules: [{allow: public}, {allow: public}]) {
+  id: ID!
+  tenantsID: ID!
+  propertiesID: ID!
+  tenants: Tenants! @connection(fields: ["tenantsID"])
+  properties: Properties! @connection(fields: ["propertiesID"])
+}
+ 

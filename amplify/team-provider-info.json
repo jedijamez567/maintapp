@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-maintapp-staging-15556-authRole",
+      "UnauthRoleArn": "arn:aws:iam::409536199879:role/amplify-maintapp-staging-15556-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::409536199879:role/amplify-maintapp-staging-15556-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-maintapp-staging-15556-deployment",
+      "UnauthRoleName": "amplify-maintapp-staging-15556-unauthRole",
+      "StackName": "amplify-maintapp-staging-15556",
+      "StackId": "arn:aws:cloudformation:us-east-1:409536199879:stack/amplify-maintapp-staging-15556/27156970-4ef9-11eb-b954-1245bb6cedee",
+      "AmplifyAppId": "d367rjwtpensi0"
+    },
+    "categories": {
+      "auth": {
+        "maintappe6d5a69c": {}
+      }
+    }
+  }
+}
