@@ -1,0 +1,25 @@
+{
+  "trigger": true,
+  "modules": [
+    "verification-link"
+  ],
+  "parentResource": "awsgraphqlreact125ada40",
+  "functionName": "awsgraphqlreact125ada40CustomMessage",
+  "resourceName": "awsgraphqlreact125ada40CustomMessage",
+  "parentStack": "auth",
+  "triggerEnvs": [
+    {
+      "key": "RESOURCENAME",
+      "value": "resourceName"
+    }
+  ],
+  "triggerDir": "C:\\Users\\Dakot\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\CustomMessage",
+  "triggerTemplate": "CustomMessage.json.ejs",
+  "roleName": "awsgraphqlreact125ada40CustomMessage",
+  "skipEdit": true,
+  "REDIRECTURL": "http://localhost:3000/",
+  "EMAILSUBJECT": "New Tenant Email Verification",
+  "EMAILMESSAGE": "Hello, please clink below to verify your account. Once you have completed verification, you will be able to login!",
+  "RESOURCENAME": "resourceName",
+  "enableCors": false
+}
