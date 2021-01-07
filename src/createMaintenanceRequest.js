@@ -32,7 +32,7 @@ class CreateTicket extends React.Component {
           id: uuid4().toString(),
           creationDate: d,
           severity: this.severity.value, //newSeverity
-          maintenanceworkersID: "hello there",
+          maintenanceworkersID: "1232344325",
           tenantsID: "hello there"
         }
       }
